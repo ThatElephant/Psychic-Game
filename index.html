@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Psychic Game</title>
+	<link href="assets/css/reset.css" type="text/css" rel="stylesheet">
+	<link href="assets/css/style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<div id="div1"><h1>The Psychic Game</h1></div>
+	<div id="game-space">
+    <hr>
+    <p>Guess the letter I'm thinking of...</p>
+    <br>
+    <hr>
+    <p>Wins: <span id="wins"></span></p>
+    <br>
+    <hr>
+    <p>Losses: <span id="losses"></span></p>
+    <br>
+    <hr>
+    <p>Attempts Remaining: <span id="lives"></span></p>
+    <br>
+    <hr>
+    <p>Your Guesses so far: <span id="guesses"></span></p>
+    <br>
+    <hr>
+    <p id="message"></p>
+  </div>
+
+<script type="text/javascript">
+var wins = 0;
+var losses = 0;
+var lives = 15;
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+var myLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+	console.log("The letter is: " + myLetter);
+
+// set all of the fields to their values
+document.getElementById("wins").innerHTML += wins;
+document.getElementById("losses").innerHTML += losses;
+document.getElementById("lives").innerHTML += lives;
+
+document.onkeyup = function() {
+    var userGuess = event.key.toLowerCase().trim(); // trim out any extra whitespace
+  if (userGuess.length <= 0) { return; } // if it was a blank character ignore it
+
+    console.log("User pressed: " + userGuess);
+
+    if (userGuess == myLetter) {
+      wins++; // give them a win
+    lives = 15; // reset their life
+      document.getElementById("message").innerHTML = "It was " + userGuess + "! Nice job!";
+        document.getElementById("wins").innerHTML = wins; // show their win
+    document.getElementById("guesses").innerHTML = ""; // reset the guesses
+        document.getElementById("lives").innerHTML = lives; // show their lives
+    myLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
+    	console.log("The new letter is: " + myLetter); // new letter
+    } else { // we don't need to specify anything in this else because it wasn't right anyways
+      document.getElementById("message").innerHTML = "It wasn't " + userGuess + "!";
+    document.getElementById("guesses").innerHTML += userGuess;
+      lives--; // remove a life
+        document.getElementById("lives").innerHTML = lives; // show their lives
+    }
+  if (lives <= 0) {
+      losses++;
+    lives = 15; // reset their life
+    document.getElementById("message").innerHTML = "You lost. Sorry.";
+    document.getElementById("guesses").innerHTML = ""; // reset the guesses
+        document.getElementById("losses").innerHTML = losses; // show their losses
+        document.getElementById("lives").innerHTML = lives; // show their lives
+    myLetter = alphabet[Math.floor(Math.random() * alphabet.length)]; // new letter
+    	console.log("The new letter is: " + myLetter);
+    }
+};
+</script>
+</body>
+</html>

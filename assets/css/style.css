@@ -1,0 +1,13 @@
+#div1 h1 {
+    font-weight: bold;
+    font-size: 40px;
+    margin: 20px;
+}
+
+hr {
+	visibility: hidden;
+}
+
+br {
+	visibility: hidden;
+}
