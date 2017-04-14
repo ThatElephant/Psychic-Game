@@ -8,6 +8,8 @@ var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 var myLetter = alphabet[Math.floor(Math.random() * alphabet.length)];
 	console.log("The letter is: " + myLetter);
 
+$(function () {
+
 document.getElementById("wins").innerHTML += wins;
 document.getElementById("losses").innerHTML += losses;
 document.getElementById("lives").innerHTML += lives;
@@ -44,3 +46,5 @@ document.onkeyup = function() {
     	console.log("The new letter is: " + myLetter);
     }
 };
+
+});
