@@ -1,4 +1,5 @@
-<script type="text/javascript">
+
+
 var wins = 0;
 var losses = 0;
 var lives = 15;
@@ -43,4 +44,3 @@ document.onkeyup = function() {
     	console.log("The new letter is: " + myLetter);
     }
 };
-</script>
